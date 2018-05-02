@@ -7,11 +7,9 @@ public class Room {
 	final String mathematicalSystem = "Euclidean geometry";
 	final int numberOfDimensions = 3;
 	boolean otherPlanesPresence;
-	boolean enlightening;
 
-	public Room(boolean furnitura, boolean light) {
+	public Room(boolean furnitura) {
 		otherPlanesPresence = furnitura;
-		enlightening = light;
 	}
 
 	public String getNameOfTheRoom() {
@@ -36,5 +34,9 @@ public class Room {
 
 	public void pickUpToys() {
 		System.out.println("Toys are picked up!");
+	}
+	
+	public void lightOn() {
+		System.out.println("Light is turn on!");
 	}
 }

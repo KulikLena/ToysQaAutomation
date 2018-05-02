@@ -2,10 +2,8 @@ package objects;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 import general.Room;
@@ -14,9 +12,10 @@ public class ToysTest {
 
 	public static void main(String[] args) {
 
-		Room room = new Room(false, true);
+		Room room = new Room(false);
 		room.setNameOfTheRoom("Red room");
 		room.setShapeOfTheRoom("Cube");
+		room.lightOn();
 		room.throwToys();
 
 		List<Ball> balls = new ArrayList<Ball>();
@@ -44,11 +43,12 @@ public class ToysTest {
 		balls.get(5).weight = 0.11;
 		balls.get(5).size = "1_Tiny";
 
-		// производим сортировку по размеру
+		// сортируем мячи по размеру
 		Collections.sort(balls, Ball.COMPARE_BY_SIZE);
 		for (int i = 0; i < balls.size(); i++) {
 			System.out.println(balls.get(i).size);
 		}
+		System.out.println();
 
 		TreeSet<Car> cars = new TreeSet<Car>();
 		cars.add(new Car("truck", 0.78));
@@ -58,15 +58,24 @@ public class ToysTest {
 		cars.add(new Car("passenger car", 0.21));
 		cars.add(new Car("tractor", 1.05));
 		cars.add(new Car("combine", 1.75));
-		
-		
-		
-		Iterator<Car> iter = cars.iterator();
-		while (iter.hasNext()) {
-			cars.removeIf(iter.next().weight>1.58);
-			System.out.println(iter.next().weight );
-			
+
+		// находим машинки, которые тяжелее трактора
+		Set<Car> subCars = cars.tailSet(new Car("tractor", 1.05));
+
+		for (Car elem : subCars) {
+			System.out.println(elem.weight + " " + elem.type);
 		}
+		System.out.println();
+		// находим машинки, которые тяжелее грузовика, но легче комбайна
+		Set<Car> subSubCars = cars.subSet(new Car("truck", 0.78), new Car("combine", 1.75));
+
+		for (Car elem : subSubCars) {
+			System.out.println(elem.weight + " " + elem.type);
+		}
+
+		Doll[] dolls = { new Doll("Amy"), new Doll("Kate"), new Doll("Pam"), new Doll("Doroty") };
+		dolls[2].play();
+		System.out.print(" "+dolls[2].name);
 
 	}
 

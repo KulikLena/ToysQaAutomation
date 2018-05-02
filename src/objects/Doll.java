@@ -7,6 +7,11 @@ public class Doll extends Toys implements Methods {
 	String gender;
 	String name;
 
+	public Doll(String r) {
+		super();
+		name = r;
+	}
+
 	@Override
 	public void movement(String manner) {
 		if (manner == "drop") {
@@ -20,7 +25,7 @@ public class Doll extends Toys implements Methods {
 
 	@Override
 	public void play() {
-		System.out.println("A child plays with doll");
+		System.out.print("A child plays with doll");
 
 	}
 

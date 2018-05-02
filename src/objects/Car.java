@@ -8,6 +8,7 @@ public class Car extends Toys implements Methods, Comparable<Car> {
 	int numberOfWheels;
 
 	public Car(String r, double w) {
+		super();
 		type = r;
 		weight = w;
 	}

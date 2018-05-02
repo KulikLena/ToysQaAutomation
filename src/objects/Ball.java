@@ -9,6 +9,7 @@ public class Ball extends Toys implements Methods {
 	String purpose;
 
 	public Ball(String type) {
+		super();
 		type = purpose;
 	}
 
